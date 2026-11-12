@@ -126,10 +126,13 @@ public class BioBuzzAuton1 extends LinearOpMode {
     public void runOpMode() {
 
         // Initialize the drive system variables.
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
+        leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+        intake = hardwareMap.get(DcMotor.class, "intake");
         launcher = hardwareMap.get(DcMotorEx.class, "launcher");
         windmillServo = hardwareMap.get(CRServo.class, "windmill");
+        leftIntakeServo = hardwareMap.get(CRServo.class, "left_intake_servo");
+        rightIntakeServo = hardwareMap.get(CRServo.class, "right_intake_servo");
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // When run, this OpMode should start both motors driving forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -193,14 +196,14 @@ public class BioBuzzAuton1 extends LinearOpMode {
         driveStraight(DRIVE_SPEED,18.0,-90.0);
 
         sleep(500);
-
+        intake.setPower(1);
         launcher.setVelocity(LAUNCHER_TARGET_VELOCITY);
         sleep(1000);
         windmillServo.setPower(1);
         sleep(5000);
         launcher.setVelocity(0);
         windmillServo.setPower(0);
-
+    intake.setPower(0);
         driveStraight(DRIVE_SPEED, 55.0, 120.0);  // Drive Forward 17" at -45 degrees (12"x and 12"y)
 
        turnToHeading( TURN_SPEED,  120.0);               // Turn  CCW  to  45 Degrees
