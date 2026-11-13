@@ -204,7 +204,6 @@ public class BioBuzzAuton1 extends LinearOpMode {
         launcher.setVelocity(0);
         windmillServo.setPower(0);
     intake.setPower(0);
-
         driveStraight(DRIVE_SPEED, 55.0, 120.0);  // Drive Forward 17" at -45 degrees (12"x and 12"y)
 
        turnToHeading( TURN_SPEED,  120.0);               // Turn  CCW  to  45 Degrees
